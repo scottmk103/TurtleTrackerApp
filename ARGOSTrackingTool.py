@@ -1,4 +1,4 @@
-#---------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 #ARGOSTrackingTool.py
 #
 #Description: Reads in an ARGOS tracking data file and allows the user
@@ -7,3 +7,19 @@
 #
 #Author: Michael Scott (mks71@duke.edu
 #Date: Fall 2020
+#------------------------------------------------------------------------------
+# Copy and paste a line of data as the lineString variable value
+lineString = '20616	29051	7/3/2003 9:13	3	66	33.898	-77.958	27.369	-46.309	6	0	-126	529	3	401 651134.7	0'
+
+#Use the split command to parse the items in lineString into a list object
+lineData = lineString.split()
+
+#Assign variables to specific items in the list
+record_id = lineData[0]  #ARGOS tracking record id
+obs_date = lineData[2] #Observation date
+obs_lc = lineData[4] # Observation location class
+obs_lat = lineData[6] # Observation latitude
+obs_long = lineData[7] # Observation longitude
+
+#Print the location of Sara
+print(f'Record {record_id} indicates Sara was seen at lat:{obs_lat}, long:{obs_long} on {obs_date}')
