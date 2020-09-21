@@ -8,32 +8,32 @@
 #Author: Michael Scott (mks71@duke.edu
 #Date: Fall 2020
 #------------------------------------------------------------------------------
+
 #Create a variable pointing to the data file
-file_name= './data/raw/Sara.txt'
+file_name = './data/raw/sara.txt'
 
-# Create a file object from the file
-file_obj = open(file_name, 'r')
+#Create a file object from the file
+file_object = open(file_name,'r')
 
-#Read content of file into a list
-line_list = file_obj.readlines()
+#Read contents of file into a list
+line_list = file_object.readlines()
 
 #Close the file
-file_obj.close()
+file_object.close()
 
-#Pretend we read one line of data from the file
-lineString = line_list[130]
+#Iterate through all lines in the the lineList
+for lineString in line_list:
+    if lineString[0] in ("#","u"): continue
 
-#Use the split command to parse the items in lineString into a list object
-lineData = lineString.split()
-
-#Assign variables to specific items in the list
-record_id = lineData[0]  #ARGOS tracking record id
-obs_date = lineData[2] #Observation date
-obs_lc = lineData[4] # Observation location class
-obs_lat = lineData[6] # Observation latitude
-obs_long = lineData[7] # Observation longitude
-
-#Print the location of Sara
-print(f'Record {record_id} indicates Sara was seen at lat:{obs_lat}, long:{obs_long} on {obs_date}')
-
-
+    #Split the string into a list of data items
+    lineData = lineString.split()
+    
+    #Extract items in list into variables
+    record_id = lineData[0]
+    obs_date = lineData[2]
+    obs_lc = lineData[4]
+    obs_lat = lineData[6]
+    obs_lon = lineData[7]
+    
+    #Print the location of sara
+    print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
